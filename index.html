@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+
+      <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main {
+    border: 2px solid rgb(9, 9, 123);
+    color: white;
+    background-color: black;
+
+    height: 40em;
+    width: 60em;
+
+    margin-top: 2.5em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgb(1, 39, 110);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+
+}
+
+.buttons {
+    border: 2px solid white;
+    height: 10em;
+    width: 30em;
+    margin-top: 10em;
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.495);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.rock {
+    /* border: 2px solid white; */
+    width: 8em;
+    height: 8em;
+    border-radius: 5px;
+    overflow: hidden;
+    /* background-color: rgb(2, 18, 30); */
+}
+.rock button{
+    background-color: rgb(17, 17, 17);
+    border: 0cap;
+    cursor: pointer;
+}
+
+
+.rock button img:hover {
+    transform: translate(0%, 0%) scale(1.05);
+}
+
+.rock img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 10px 10px 15px rgba(255, 255, 255, 0.853);
+    transform: translate(0, 0%) scale(1);
+}
+
+.text_display {
+
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 2.8em;
+    text-shadow:3px 0px 4px rgba(255, 255, 255, 0.752);
+}
+    </style>
+      
+    </head>
+    <body>
+        
+        <div class="main" id="main_container">
+
+            <div class="title"><h1>ROCK PAPER SCISSOR</h1></div>
+
+            <div class="buttons">
+                <div class="rock">
+                    <button id="rock"><img src="https://drive.google.com/file/d/1DQ7XLDn1qXB_2CCPj4VtxgZuyxLros8y/view?usp=sharing" alt=""></button>
+                    
+                </div>
+                <div class="rock paper">
+                    <button id="paper"><img src="https://drive.google.com/file/d/1hvOULykg_6yPQnnSGDYBvjifb-JQur5t/view?usp=sharing" alt=""></button>
+                    
+                </div>
+                <div class="rock scissor">
+                    <button id="scissor"><img src="https://drive.google.com/file/d/1I0ss5bS0SMugoCQosFJLaVl4WGl1yNrD/view?usp=sharing" alt=""></button>
+                    
+                </div>
+            </div>
+
+            <div class="text_display" id="text_display"></div>
+
+        </div>
+        
+        <script>
+          
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissor = document.getElementById("scissor");
+const display_text = document.getElementById("text_display");
+//genarating a random number between 1 to 3
+
+
+rock.addEventListener("click", rock_pressed => {
+
+
+    let rand = Math.floor(Math.random() * 3 + 1);
+
+    //bot
+    let r = false;
+    let p = false;
+    let c = false;
+
+    if (rand === 1) {
+        r = true;
+        p = false;
+        c = false;
+    } else if (rand === 2) {
+        r = false;
+        p = true;
+        c = false;
+    } else if (rand === 3) {
+        r = false;
+        p = false;
+        c = true;
+    }
+
+
+    if (rock_pressed && r == true && p == false && c == false) {
+        console.log("DRAW");
+        display_text.innerText = "DRAW";
+
+        rock.style.backgroundColor = "brown";
+
+        setTimeout(() => {
+            rock.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+
+    } else if (rock_pressed && r == false && p == true && c == false) {
+        console.log("LOSE");
+        display_text.innerText = "LOSE";
+
+        rock.style.backgroundColor = "red";
+        paper.style.backgroundColor = "green";
+
+        setTimeout(() => {
+            rock.style.backgroundColor = "rgb(17, 17, 17)";
+            paper.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+
+
+    } else if (rock_pressed && r == false && p == false && c == true) {
+        console.log("WON");
+        display_text.innerText = "WON";
+
+        rock.style.backgroundColor = "green";
+        scissor.style.backgroundColor = "red";
+
+        setTimeout(() => {
+            rock.style.backgroundColor = "rgb(17, 17, 17)";
+            scissor.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+    }
+
+
+
+
+})
+
+
+
+
+
+paper.addEventListener("click", paper_pressed => {
+
+
+    let rand = Math.floor(Math.random() * 3 + 1);
+
+    //bot
+    let r = false;
+    let p = false;
+    let c = false;
+
+    if (rand === 1) {
+        r = true;
+        p = false;
+        c = false;
+    } else if (rand === 2) {
+        r = false;
+        p = true;
+        c = false;
+    } else if (rand === 3) {
+        r = false;
+        p = false;
+        c = true;
+    }
+
+
+    if (paper_pressed && r == false && p == true && c == false) {
+        console.log("DRAW")
+        display_text.innerText = "DRAW";
+        paper.style.backgroundColor = "brown";
+
+        setTimeout(() => {
+            paper.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+
+    } else if (paper_pressed && r == false && p == false && c == true) {
+        console.log("LOSE")
+        display_text.innerText = "LOSE";
+        paper.style.backgroundColor = "red";
+        scissor.style.backgroundColor = "green";
+
+        setTimeout(() => {
+            paper.style.backgroundColor = "rgb(17, 17, 17)";
+            scissor.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+
+    } else if (paper_pressed && r == true && p == false && c == false) {
+        console.log("WON")
+        display_text.innerText = "WON";
+       
+        paper.style.backgroundColor = "green";
+        rock.style.backgroundColor = "red";
+
+        setTimeout(() => {
+            paper.style.backgroundColor = "rgb(17, 17, 17)";
+            rock.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+    }
+})
+
+
+
+
+scissor.addEventListener("click", scissor_pressed => {
+
+
+    let rand = Math.floor(Math.random() * 3 + 1);
+
+    //bot
+    let r = false;
+    let p = false;
+    let c = false;
+
+    if (rand === 1) {
+        r = true;
+        p = false;
+        c = false;
+    } else if (rand === 2) {
+        r = false;
+        p = true;
+        c = false;
+    } else if (rand === 3) {
+        r = false;
+        p = false;
+        c = true;
+    }
+
+
+    if (scissor_pressed && r == true && p == false && c == false) {
+        console.log("LOSE")
+        display_text.innerText = "LOSE";
+        scissor.style.backgroundColor = "red";
+        rock.style.backgroundColor = "green";
+
+
+        setTimeout(() => {
+            scissor.style.backgroundColor = "rgb(17, 17, 17)";
+            rock.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+
+    } else if (scissor_pressed && r == false && p == true && c == false) {
+        console.log("WON")
+        display_text.innerText = "WON";
+        scissor.style.backgroundColor = "green";
+        paper.style.backgroundColor = "red";
+
+
+        setTimeout(() => {
+            scissor.style.backgroundColor = "rgb(17, 17, 17)";
+            paper.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+    } else if (scissor_pressed && r == false && p == false && c == true) {
+        console.log("DRAW")
+        display_text.innerText = "DRAW";
+        scissor.style.backgroundColor = "brown";
+
+
+        setTimeout(() => {
+            scissor.style.backgroundColor = "rgb(17, 17, 17)";
+        }, 1000);
+    }
+})
+
+
+        </script>
+    </body>
+</html>
